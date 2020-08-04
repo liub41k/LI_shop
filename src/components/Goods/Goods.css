@@ -1,0 +1,21 @@
+.goods__item {
+	display: grid;
+}
+
+.goods__link {
+	display: grid;
+	justify-items: center;
+	grid-template-rows: min-content 1fr min-content;
+}
+
+.goods__title {
+	padding-top: 10px;
+	font-size: 2rem;
+	font-weight: 700;
+}
+
+.goods__price {
+	padding-top: 20px;
+	color: lightcoral;
+}
+/* TODO sold out styles */

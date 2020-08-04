@@ -1,0 +1,146 @@
+.header {
+	position: absolute;
+	width: 100%;
+	top: 0;
+	left: 0;
+	color: var(--white);
+	padding: 20px 0;
+}
+
+.header__container {
+	display: grid;
+	grid-template-columns: repeat(2, max-content);
+	column-gap: 20px;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.logo {
+	font-family: 'Permanent Marker', cursive;
+}
+
+.social {
+	display: flex;
+}
+
+.social__item {
+	font-size: 1.4rem;
+}
+
+.social > * + * {
+	margin-left: 20px;
+}
+
+.social__icon {
+	display: none;
+}
+
+@media screen and (max-width: 768px) {
+	.header {
+		padding: 10px 0;
+	}
+
+	.social__item {
+		width: 40px;
+		height: 40px;
+		color: var(--white);
+	}
+
+	.social__name {
+		display: none;
+	}
+
+	.social__icon {
+		display: block;
+	}
+}
+
+/* FIXME outline, overflow */
+/* MENU */
+.menu {
+	--animation: 0.25s;
+	--animation-function: cubic-bezier(0.03, 1.08, 0.51, 1.22);
+
+	display: block;
+	position: relative;
+	background-color: transparent;
+	border: none;
+	width: 2em;
+	height: 1.2em;
+	margin: 0;
+	padding: 0;
+	font-size: 20px;
+	cursor: pointer;
+}
+/* 
+.menu:focus {
+	outline: none;
+} */
+
+.menu span {
+	display: block;
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 3px;
+	background: white;
+	border-radius: 2px;
+}
+
+.menu span:nth-child(1) {
+	top: 0;
+	transition: all var(--animation) var(--animation-function)
+		calc(var(--animation) / 3);
+}
+
+.menu span:nth-child(2) {
+	top: 50%;
+	transform: translateY(-50%);
+	transition: all var(--animation) var(--animation-function)
+		calc(var(--animation) / 3 * 2);
+}
+
+.menu span:nth-child(3) {
+	bottom: 0;
+	transition: all var(--animation) var(--animation-function)
+		calc(var(--animation) / 3 * 3);
+}
+
+.menu::after,
+.menu::before {
+	content: '';
+	opacity: 0;
+	position: absolute;
+	width: 80%;
+	height: 3px;
+	left: 10%;
+	background-color: white;
+	border-radius: 2px;
+	transition: all var(--animation) var(--animation-function);
+}
+.menu::after {
+	top: -56%;
+	transform: rotate(45deg);
+}
+.menu::before {
+	transform: rotate(-45deg);
+	bottom: -56%;
+}
+.menu.open span {
+	left: -100%;
+	opacity: 0;
+}
+
+.menu.open::after {
+	opacity: 1;
+	top: 42%;
+	transition: all var(--animation) var(--animation-function)
+		calc(var(--animation) + (var(--animation) / 3));
+}
+.menu.open::before {
+	opacity: 1;
+	bottom: 42%;
+	transition: all var(--animation) var(--animation-function)
+		calc(var(--animation) + (var(--animation) / 3));
+}
+/* MENU */
